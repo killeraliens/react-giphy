@@ -14,17 +14,39 @@ class App extends Component {
     }
   }
 
+  // search = (query) => {
+  //   const apiKey = "vCLKoTPYsWPI5gTALQzSl6OgbyYZrBxz";
+  //   giphy(apiKey).search({
+  //       q: query,
+  //       rating: "g"
+  //   }, (error, results) => {
+  //     this.setState({
+  //       gifs: results.data
+  //     });
+  //   });
+  // }
+
   search = (query) => {
     const apiKey = "vCLKoTPYsWPI5gTALQzSl6OgbyYZrBxz";
-    giphy(apiKey).search({
-        q: query,
-        rating: "g"
-    }, (error, results) => {
+    const url = `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${apiKey}`;
+    // giphy(apiKey).search({
+    //     q: query,
+    //     rating: "g"
+    // }, (error, results) => {
+    //   this.setState({
+    //     gifs: results.data
+    //   });
+    // });
+    fetch(url)
+    .then((results) => results.json())
+    .then((json) => {
       this.setState({
-        gifs: results.data
+        gifs: json.data
       });
     });
   }
+
+
 
   select = (gifId) => {
     this.setState({
