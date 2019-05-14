@@ -27,7 +27,7 @@ class App extends Component {
   // }
 
   search = (query) => {
-    const apiKey = "vCLKoTPYsWPI5gTALQzSl6OgbyYZrBxz";
+    const apiKey = process.env.API_URL;
     const url = `https://api.giphy.com/v1/gifs/search?q=${query}&api_key=${apiKey}`;
     // giphy(apiKey).search({
     //     q: query,
